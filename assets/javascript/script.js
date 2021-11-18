@@ -1,4 +1,3 @@
-
 // OMDB key 107a41b7, API example shown below
 //`http://www.omdbapi.com/?apikey=107a41b7&t=matrix`;
 
@@ -23,6 +22,9 @@ const getMovie = function (movieName) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
+          alert(
+            `${data.Title} Year: ${data.Year} Rated: ${data.Rated} Plot: ${data.Plot}`
+          );
         });
       } else {
         alert("Error: " + response.statusText);
@@ -62,7 +64,7 @@ const getWikiMovies = function (wikiArticle) {
               movieArray.push(titleOnly[0]);
             }
           }
-          alert(movieArray);
+          // alert(movieArray);
         });
       } else {
         alert("Error: " + response.statusText);
@@ -73,10 +75,29 @@ const getWikiMovies = function (wikiArticle) {
     });
 };
 
-//getMovie("matrix");
+// Select movie from movieArray,  then select one and run getmovie
+const selectMovie = function () {
+  // Checks if any movies present
+  if (movieArray[0]) {
+    console.log("some movies are present");
+    let randomNum = Math.floor(Math.random() * movieArray.length);
+    console.log(randomNum);
+    /// Select one movie at random
+    getMovie(movieArray[randomNum]);
+  } else {
+    console.log("no movies present");
+  }
+};
+
 var actionButton = document.querySelector(".genre-btn");
 console.log(actionButton);
-// getWikiMovies(dramaWiki10);
-actionButton.addEventListener("click", function() {
-    getWikiMovies(actionWiki20)
-})
+
+actionButton.addEventListener("click", function () {
+  // Check if getWikiMovies has already been called
+  if (movieArray[0]) {
+    setTimeout(selectMovie, 1000);
+  } else {
+    getWikiMovies(actionWiki20);
+    setTimeout(selectMovie, 1000);
+  }
+});
