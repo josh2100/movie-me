@@ -1,3 +1,4 @@
+
 // OMDB key 107a41b7, API example shown below
 //`http://www.omdbapi.com/?apikey=107a41b7&t=matrix`;
 
@@ -72,6 +73,10 @@ const getWikiMovies = function (wikiArticle) {
     });
 };
 
-getMovie("matrix");
-
-getWikiMovies(dramaWiki10);
+//getMovie("matrix");
+var actionButton = document.querySelector("#action-button");
+console.log(actionButton);
+// getWikiMovies(dramaWiki10);
+actionButton.addEventListener("click", function() {
+    getWikiMovies(actionWiki20)
+})
