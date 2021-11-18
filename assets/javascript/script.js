@@ -74,7 +74,7 @@ const getWikiMovies = function (wikiArticle) {
 };
 
 //getMovie("matrix");
-var actionButton = document.querySelector("#action-button");
+var actionButton = document.querySelector(".genre-btn");
 console.log(actionButton);
 // getWikiMovies(dramaWiki10);
 actionButton.addEventListener("click", function() {
