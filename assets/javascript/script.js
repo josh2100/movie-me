@@ -7,7 +7,7 @@ const actionWiki20 = "List_of_action_films_of_the_2020s";
 const commedyWiki20 = "List_of_comedy_films_of_the_2020s";
 const dramaWiki10 = "List_of_drama_films_of_the_2010s";
 const dramaWiki20 = "List_of_drama_films_of_the_2020s";
-let movieArray = [];
+let actionMovieArray = [];
 
 // Enter a movie name in parenthesis for an argument and get movie information
 const getMovie = function (movieName) {
@@ -35,7 +35,7 @@ const getMovie = function (movieName) {
     });
 };
 
-// Run function with Wikipedia article argument to push movies to movieArray
+// Run function with Wikipedia article argument to push movies to actionMovieArray
 const getWikiMovies = function (wikiArticle) {
   let article = wikiArticle;
   let wikipediaApi = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&prop=links&pllimit=500&titles=${article}&origin=*`;
@@ -61,10 +61,10 @@ const getWikiMovies = function (wikiArticle) {
               let titleOnly = element.title.split("(");
               console.log(titleOnly[0]);
               // Add it to our list
-              movieArray.push(titleOnly[0]);
+              actionMovieArray.push(titleOnly[0]);
             }
           }
-          // alert(movieArray);
+          // alert(actionMovieArray);
         });
       } else {
         alert("Error: " + response.statusText);
@@ -75,26 +75,26 @@ const getWikiMovies = function (wikiArticle) {
     });
 };
 
-// Select movie from movieArray,  then select one and run getmovie
+// Select movie from actionMovieArray,  then select one and run getmovie
 const selectMovie = function () {
   // Checks if any movies present
-  if (movieArray[0]) {
+  if (actionMovieArray[0]) {
     console.log("some movies are present");
-    let randomNum = Math.floor(Math.random() * movieArray.length);
+    let randomNum = Math.floor(Math.random() * actionMovieArray.length);
     console.log(randomNum);
     /// Select one movie at random
-    getMovie(movieArray[randomNum]);
+    getMovie(actionMovieArray[randomNum]);
   } else {
     console.log("no movies present");
   }
 };
 
-var actionButton = document.querySelector(".genre-btn");
+var actionButton = document.querySelector("#action-button");
 console.log(actionButton);
 
 actionButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
-  if (movieArray[0]) {
+  if (actionMovieArray[0]) {
     setTimeout(selectMovie, 1000);
   } else {
     getWikiMovies(actionWiki20);
