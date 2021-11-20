@@ -1,49 +1,49 @@
 body {
-    background-color: #1b1b1c;
+  background-color: #1b1b1c;
 }
 
 .display-content {
-    background-color: #fff;
-    width: 800px;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    position: relative;
-    top: 200px;
-    align-items: center;
-    padding: 15px;
+  background-color: #fff;
+  width: 800px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+  top: 200px;
+  align-items: center;
+  padding: 15px;
 }
 
 .movie-content {
-    font-size: 50px;
-    color: #000000;
+  font-size: 50px;
+  color: #000000;
 }
 
 .genre-btn {
-    position: relative;
-    top: 250px;
-    display: flex;
-    margin: auto;
-    justify-content: center;
+  position: relative;
+  top: 250px;
+  display: flex;
+  margin: auto;
+  justify-content: center;
 }
 
 .btn {
-    margin: 10px;
+  margin: 10px;
 }
 
 #title {
-    font-size: 60px;
+  font-size: 60px;
 }
 
 #year {
-    font-size: 40px;
+  font-size: 40px;
 }
 
 #rating {
-    font-size: 40px;
+  font-size: 40px;
 }
 
 #plot {
-    font-size: 30px;
+  font-size: 30px;
 }
