@@ -15,6 +15,10 @@ var romanceButton = document.querySelector("#romance-button");
 console.log(actionButton);
 var mysteryButton = document.querySelector("#mystery-button");
 console.log(actionButton);
+var currentMovie = {
+  title: "",
+  plot: "",
+}
 
 // Variables to hold wikipedia article names
 // We need the following genres: Action Comedy Drama Fantasy Horror Mystery Romance
@@ -51,11 +55,14 @@ const getMovie = function (movieName) {
           alert(
             `${data.Title} Year: ${data.Year} Rated: ${data.Rated} Plot: ${data.Plot}`
             );
+            currentMovie.title = data.Title;
+            currentMovie.plot = data.Plot;
         });
       } else {
         alert("Error: " + response.statusText);
       }
     })
+
     .catch(function () {
       alert("Unable to connect");
     });
@@ -114,6 +121,11 @@ const selectMovie = function (genreArray) {
   }
 };
 
+var displayMovie = function() {
+  //displayArea.textContent = currentMovie.title;
+  displayArea.innerHTML = `<h1>${currentMovie.title}</h1><p>${currentMovie.plot}</p>`;
+}
+
 // Preload all the Wikipedia data
 getWikiMovies(actionWiki20, actionMovieArray);
 getWikiMovies(comedyWiki20, comedyMovieArray);
@@ -127,7 +139,7 @@ actionButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (actionMovieArray[0]) {
     selectMovie(actionMovieArray);
-    displayArea.textContent = "Action";
+    setTimeout(displayMovie,1000);
   } else {
     getWikiMovies(actionWiki20, actionMovieArray);
     setTimeout(selectMovie(actionMovieArray), 1000);
