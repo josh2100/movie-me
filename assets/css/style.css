@@ -12,6 +12,7 @@ body {
     position: relative;
     top: 200px;
     align-items: center;
+    padding: 15px;
 }
 
 .movie-content {
@@ -29,4 +30,20 @@ body {
 
 .btn {
     margin: 10px;
+}
+
+#title {
+    font-size: 60px;
+}
+
+#year {
+    font-size: 40px;
+}
+
+#rating {
+    font-size: 40px;
+}
+
+#plot {
+    font-size: 30px;
 }

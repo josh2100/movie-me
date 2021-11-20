@@ -127,7 +127,7 @@ const selectMovie = function (genreArray) {
 
 var displayMovie = function() {
   //displayArea.textContent = currentMovie.title;
-  displayArea.innerHTML = `<h1>${currentMovie.title}</h1><p>${currentMovie.year}</p><p>${currentMovie.rating}</p><p>${currentMovie.plot}</p>`;
+  displayArea.innerHTML = `<h1 id="title">${currentMovie.title}</h1><p id="year">${currentMovie.year}</p><p id="rating">${currentMovie.rating}</p><p id="plot">${currentMovie.plot}</p>`;
 }
 
 // Preload all the Wikipedia data
