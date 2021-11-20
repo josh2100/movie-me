@@ -1,12 +1,27 @@
 body {
-    background-color: #1b1b1c;
+    background-color: #0b0f0d;
 }
-
+button {
+    color: #1df276;
+    background-color: #0b1412;
+    border: 1px solid #1df276;
+    border-radius: 4px;
+    padding: 0 15px;
+    cursor: pointer;
+    height:32px;
+    font-size:14px;
+    transition: all 0.2s ease-in-out;
+    }
+    button:hover {
+    box-shadow: 1px 1px #1df276, 2px 2px #1df276, 3px 3px #1df276;
+    transform: translateX(-3px);
+    }
 .display-content {
     background-color: #fff;
     width: 800px;
     height: 400px;
     display: flex;
+    border-radius: 15px;
     justify-content: center;
     margin: auto;
     position: relative;
