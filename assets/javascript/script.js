@@ -1,6 +1,6 @@
 // OMDB key 107a41b7, API example shown below
 //`http://www.omdbapi.com/?apikey=107a41b7&t=matrix`;
-
+var displayArea = document.querySelector("#movie-name");
 var actionButton = document.querySelector("#action-button");
 console.log(actionButton);
 var comedyButton = document.querySelector("#comedy-button");
@@ -50,7 +50,7 @@ const getMovie = function (movieName) {
           console.log(data);
           alert(
             `${data.Title} Year: ${data.Year} Rated: ${data.Rated} Plot: ${data.Plot}`
-          );
+            );
         });
       } else {
         alert("Error: " + response.statusText);
@@ -127,6 +127,7 @@ actionButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (actionMovieArray[0]) {
     selectMovie(actionMovieArray);
+    displayArea.textContent = "Action";
   } else {
     getWikiMovies(actionWiki20, actionMovieArray);
     setTimeout(selectMovie(actionMovieArray), 1000);
@@ -137,6 +138,7 @@ comedyButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (comedyMovieArray[0]) {
     selectMovie(comedyMovieArray);
+    displayArea.textContent = "Comedy";
   } else {
     getWikiMovies(actionWiki20, comedyMovieArray);
     setTimeout(selectMovie(comedyMovieArray), 1000);
@@ -147,6 +149,7 @@ dramaButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (dramaMovieArray[0]) {
     selectMovie(dramaMovieArray);
+    displayArea.textContent = "Drama";
   } else {
     getWikiMovies(dramaWiki20, dramaMovieArray);
     setTimeout(selectMovie(dramaMovieArray), 1000);
@@ -157,6 +160,7 @@ fantasyButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (fantasyMovieArray[0]) {
     selectMovie(fantasyMovieArray);
+    displayArea.textContent = "Fantasy";
   } else {
     getWikiMovies(fantasyWiki20, fantasyMovieArray);
     setTimeout(selectMovie(fantasyMovieArray), 1000);
@@ -167,6 +171,7 @@ horrorButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (horrorMovieArray[0]) {
     selectMovie(horrorMovieArray);
+    displayArea.textContent = "Horror";
   } else {
     getWikiMovies(horrorWiki20, horrorMovieArray);
     setTimeout(selectMovie(horrorMovieArray), 1000);
@@ -177,6 +182,7 @@ romanceButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (romanceMovieArray[0]) {
     selectMovie(romanceMovieArray);
+    displayArea.textContent = "Romance";
   } else {
     getWikiMovies(romanceWiki20, romanceMovieArray);
     setTimeout(selectMovie(romanceMovieArray), 1000);
@@ -187,6 +193,7 @@ mysteryButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (mysteryMovieArray[0]) {
     selectMovie(mysteryMovieArray);
+    displayArea.textContent = "Mystery";
   } else {
     getWikiMovies(mysteryWiki20, mysteryMovieArray);
     setTimeout(selectMovie(mysteryMovieArray), 1000);
