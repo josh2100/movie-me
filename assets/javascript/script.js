@@ -17,7 +17,9 @@ var mysteryButton = document.querySelector("#mystery-button");
 console.log(actionButton);
 var currentMovie = {
   title: "",
-  plot: "",
+  year: "",
+  rating: "",
+  plot: ""
 }
 
 // Variables to hold wikipedia article names
@@ -56,6 +58,8 @@ const getMovie = function (movieName) {
             `${data.Title} Year: ${data.Year} Rated: ${data.Rated} Plot: ${data.Plot}`
             );
             currentMovie.title = data.Title;
+            currentMovie.year = data.Year;
+            currentMovie.rating = data.Rated;
             currentMovie.plot = data.Plot;
         });
       } else {
@@ -123,7 +127,7 @@ const selectMovie = function (genreArray) {
 
 var displayMovie = function() {
   //displayArea.textContent = currentMovie.title;
-  displayArea.innerHTML = `<h1>${currentMovie.title}</h1><p>${currentMovie.plot}</p>`;
+  displayArea.innerHTML = `<h1>${currentMovie.title}</h1><p>${currentMovie.year}</p><p>${currentMovie.rating}</p><p>${currentMovie.plot}</p>`;
 }
 
 // Preload all the Wikipedia data
@@ -150,7 +154,7 @@ comedyButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (comedyMovieArray[0]) {
     selectMovie(comedyMovieArray);
-    displayArea.textContent = "Comedy";
+    setTimeout(displayMovie,1000);
   } else {
     getWikiMovies(actionWiki20, comedyMovieArray);
     setTimeout(selectMovie(comedyMovieArray), 1000);
@@ -161,7 +165,7 @@ dramaButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (dramaMovieArray[0]) {
     selectMovie(dramaMovieArray);
-    displayArea.textContent = "Drama";
+    setTimeout(displayMovie,1000);
   } else {
     getWikiMovies(dramaWiki20, dramaMovieArray);
     setTimeout(selectMovie(dramaMovieArray), 1000);
@@ -172,7 +176,7 @@ fantasyButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (fantasyMovieArray[0]) {
     selectMovie(fantasyMovieArray);
-    displayArea.textContent = "Fantasy";
+    setTimeout(displayMovie,1000);
   } else {
     getWikiMovies(fantasyWiki20, fantasyMovieArray);
     setTimeout(selectMovie(fantasyMovieArray), 1000);
@@ -183,7 +187,7 @@ horrorButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (horrorMovieArray[0]) {
     selectMovie(horrorMovieArray);
-    displayArea.textContent = "Horror";
+    setTimeout(displayMovie,1000);
   } else {
     getWikiMovies(horrorWiki20, horrorMovieArray);
     setTimeout(selectMovie(horrorMovieArray), 1000);
@@ -194,7 +198,7 @@ romanceButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (romanceMovieArray[0]) {
     selectMovie(romanceMovieArray);
-    displayArea.textContent = "Romance";
+    setTimeout(displayMovie,1000);
   } else {
     getWikiMovies(romanceWiki20, romanceMovieArray);
     setTimeout(selectMovie(romanceMovieArray), 1000);
@@ -205,7 +209,7 @@ mysteryButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (mysteryMovieArray[0]) {
     selectMovie(mysteryMovieArray);
-    displayArea.textContent = "Mystery";
+    setTimeout(displayMovie,1000);
   } else {
     getWikiMovies(mysteryWiki20, mysteryMovieArray);
     setTimeout(selectMovie(mysteryMovieArray), 1000);
