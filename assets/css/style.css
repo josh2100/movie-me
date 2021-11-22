@@ -9,11 +9,18 @@ body {
   width: 700px;
   height: 460px;
   padding: 15px;
+  position: relative;
+  top: -150px;
 }
 
 .movie-content {
   font-size: 50px;
   color: #000000;
+}
+
+.genre-btn {
+    position: relative;
+    top: -100px;
 }
 
 #title {
