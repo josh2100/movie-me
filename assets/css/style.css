@@ -7,25 +7,13 @@ body {
 .display-content {
   background-color: white;
   width: 700px;
-  height: 400px;
+  height: 460px;
   padding: 15px;
 }
 
 .movie-content {
   font-size: 50px;
   color: #000000;
-}
-
-/*.genre-btn {
-  position: relative;
-  top: 250px;
-  display: flex;
-  margin: auto;
-  justify-content: center;
-}*/
-
-.btn {
-  margin: 10px;
 }
 
 #title {
@@ -41,5 +29,5 @@ body {
 }
 
 #plot {
-  font-size: 30px;
+  font-size: 20px;
 }
