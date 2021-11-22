@@ -1,17 +1,13 @@
+
 body {
-  background-color: #1b1b1c;
+  background-color: "grey";
+  margin: 0;
 }
 
 .display-content {
-  background-color: #fff;
-  width: 800px;
+  background-color: white;
+  width: 700px;
   height: 400px;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  position: relative;
-  top: 200px;
-  align-items: center;
   padding: 15px;
 }
 
@@ -20,13 +16,13 @@ body {
   color: #000000;
 }
 
-.genre-btn {
+/*.genre-btn {
   position: relative;
   top: 250px;
   display: flex;
   margin: auto;
   justify-content: center;
-}
+}*/
 
 .btn {
   margin: 10px;
