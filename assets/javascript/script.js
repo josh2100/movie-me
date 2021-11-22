@@ -1,14 +1,46 @@
-
 // OMDB key 107a41b7, API example shown below
 //`http://www.omdbapi.com/?apikey=107a41b7&t=matrix`;
+var displayArea = document.querySelector("#movie-name");
+var actionButton = document.querySelector("#action-button");
+console.log(actionButton);
+var comedyButton = document.querySelector("#comedy-button");
+console.log(actionButton);
+var dramaButton = document.querySelector("#drama-button");
+console.log(actionButton);
+var fantasyButton = document.querySelector("#fantasy-button");
+console.log(actionButton);
+var horrorButton = document.querySelector("#horror-button");
+console.log(actionButton);
+var romanceButton = document.querySelector("#romance-button");
+console.log(actionButton);
+var mysteryButton = document.querySelector("#mystery-button");
+console.log(actionButton);
+var currentMovie = {
+  title: "",
+  year: "",
+  rating: "",
+  plot: "",
+};
+var watchlist = [];
 
 // Variables to hold wikipedia article names
 // We need the following genres: Action Comedy Drama Fantasy Horror Mystery Romance
 const actionWiki20 = "List_of_action_films_of_the_2020s";
-const commedyWiki20 = "List_of_comedy_films_of_the_2020s";
+const comedyWiki20 = "List_of_comedy_films_of_the_2020s";
 const dramaWiki10 = "List_of_drama_films_of_the_2010s";
 const dramaWiki20 = "List_of_drama_films_of_the_2020s";
-let movieArray = [];
+const fantasyWiki20 = "List_of_fantasy_films_of_the_2020s";
+const horrorWiki20 = "List_of_horror_films_of_the_2020s";
+const mysteryWiki20 = "List_of_mystery_films";
+const romanceWiki20 = "List_of_romance_films";
+
+let actionMovieArray = [];
+let comedyMovieArray = [];
+let dramaMovieArray = [];
+let fantasyMovieArray = [];
+let horrorMovieArray = [];
+let mysteryMovieArray = [];
+let romanceMovieArray = [];
 
 // Enter a movie name in parenthesis for an argument and get movie information
 const getMovie = function (movieName) {
@@ -23,18 +55,26 @@ const getMovie = function (movieName) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
+          // alert(
+          //   `${data.Title} Year: ${data.Year} Rated: ${data.Rated} Plot: ${data.Plot}`
+          // );
+          currentMovie.title = data.Title;
+          currentMovie.year = data.Year;
+          currentMovie.rating = data.Rated;
+          currentMovie.plot = data.Plot;
         });
       } else {
         alert("Error: " + response.statusText);
       }
     })
+
     .catch(function () {
       alert("Unable to connect");
     });
 };
 
-// Run function with Wikipedia article argument to push movies to movieArray
-const getWikiMovies = function (wikiArticle) {
+// Run function with Wikipedia article argument and genre argument to push movies to array
+const getWikiMovies = function (wikiArticle, genreArray) {
   let article = wikiArticle;
   let wikipediaApi = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&prop=links&pllimit=500&titles=${article}&origin=*`;
 
@@ -59,10 +99,9 @@ const getWikiMovies = function (wikiArticle) {
               let titleOnly = element.title.split("(");
               console.log(titleOnly[0]);
               // Add it to our list
-              movieArray.push(titleOnly[0]);
+              genreArray.push(titleOnly[0]);
             }
           }
-          alert(movieArray);
         });
       } else {
         alert("Error: " + response.statusText);
@@ -73,10 +112,131 @@ const getWikiMovies = function (wikiArticle) {
     });
 };
 
-//getMovie("matrix");
-var actionButton = document.querySelector("#action-button");
-console.log(actionButton);
-// getWikiMovies(dramaWiki10);
-actionButton.addEventListener("click", function() {
-    getWikiMovies(actionWiki20)
-})
+// Select movie from a MovieArray,  then select one and run getmovie
+const selectMovie = function (genreArray) {
+  // Checks if any movies present
+  if (genreArray[0]) {
+    console.log("some movies are present");
+    let randomNum = Math.floor(Math.random() * genreArray.length);
+    // console.log(randomNum);
+    /// Select one movie at random
+    getMovie(genreArray[randomNum]);
+  } else {
+    console.log("no movies present");
+  }
+};
+
+const saveMovie = function () {
+  // Check if this movie is already in watchlist
+  if (watchlist.includes(`${currentMovie.title}`)) {
+    alert(`${currentMovie.title} already added in watchlist`);
+  } else {
+    watchlist.unshift(`${currentMovie.title}`);
+    alert(`WATCHLIST: ${watchlist}`);
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+  }
+};
+
+var displayMovie = function () {
+  //displayArea.textContent = currentMovie.title;
+  displayArea.innerHTML = `<h1 id="title">${currentMovie.title}</h1><p id="year">${currentMovie.year}</p>
+  <p id="rating">${currentMovie.rating}</p><p id="plot">${currentMovie.plot}</p>
+  <button class="btn" id="watchlist-button">Add to Watchlist</button>`;
+
+  // Add event listener to our new Add to Watchlist button
+  document
+    .querySelector("#watchlist-button")
+    .addEventListener("click", saveMovie);
+};
+
+const loadWatchlist = function () {
+  watchlist = JSON.parse(localStorage.getItem("watchlist"));
+};
+
+// Preload all the Wikipedia data
+getWikiMovies(actionWiki20, actionMovieArray);
+getWikiMovies(comedyWiki20, comedyMovieArray);
+getWikiMovies(dramaWiki20, dramaMovieArray);
+getWikiMovies(fantasyWiki20, fantasyMovieArray);
+getWikiMovies(horrorWiki20, horrorMovieArray);
+getWikiMovies(romanceWiki20, romanceMovieArray);
+getWikiMovies(mysteryWiki20, mysteryMovieArray);
+// Load watch list
+loadWatchlist();
+
+actionButton.addEventListener("click", function () {
+  // Check if getWikiMovies has already been called
+  if (actionMovieArray[0]) {
+    selectMovie(actionMovieArray);
+    setTimeout(displayMovie, 1000);
+  } else {
+    getWikiMovies(actionWiki20, actionMovieArray);
+    setTimeout(selectMovie(actionMovieArray), 1000);
+  }
+});
+
+comedyButton.addEventListener("click", function () {
+  // Check if getWikiMovies has already been called
+  if (comedyMovieArray[0]) {
+    selectMovie(comedyMovieArray);
+    setTimeout(displayMovie, 1000);
+  } else {
+    getWikiMovies(actionWiki20, comedyMovieArray);
+    setTimeout(selectMovie(comedyMovieArray), 1000);
+  }
+});
+
+dramaButton.addEventListener("click", function () {
+  // Check if getWikiMovies has already been called
+  if (dramaMovieArray[0]) {
+    selectMovie(dramaMovieArray);
+    setTimeout(displayMovie, 1000);
+  } else {
+    getWikiMovies(dramaWiki20, dramaMovieArray);
+    setTimeout(selectMovie(dramaMovieArray), 1000);
+  }
+});
+
+fantasyButton.addEventListener("click", function () {
+  // Check if getWikiMovies has already been called
+  if (fantasyMovieArray[0]) {
+    selectMovie(fantasyMovieArray);
+    setTimeout(displayMovie, 1000);
+  } else {
+    getWikiMovies(fantasyWiki20, fantasyMovieArray);
+    setTimeout(selectMovie(fantasyMovieArray), 1000);
+  }
+});
+
+horrorButton.addEventListener("click", function () {
+  // Check if getWikiMovies has already been called
+  if (horrorMovieArray[0]) {
+    selectMovie(horrorMovieArray);
+    setTimeout(displayMovie, 1000);
+  } else {
+    getWikiMovies(horrorWiki20, horrorMovieArray);
+    setTimeout(selectMovie(horrorMovieArray), 1000);
+  }
+});
+
+romanceButton.addEventListener("click", function () {
+  // Check if getWikiMovies has already been called
+  if (romanceMovieArray[0]) {
+    selectMovie(romanceMovieArray);
+    setTimeout(displayMovie, 1000);
+  } else {
+    getWikiMovies(romanceWiki20, romanceMovieArray);
+    setTimeout(selectMovie(romanceMovieArray), 1000);
+  }
+});
+
+mysteryButton.addEventListener("click", function () {
+  // Check if getWikiMovies has already been called
+  if (mysteryMovieArray[0]) {
+    selectMovie(mysteryMovieArray);
+    setTimeout(displayMovie, 1000);
+  } else {
+    getWikiMovies(mysteryWiki20, mysteryMovieArray);
+    setTimeout(selectMovie(mysteryMovieArray), 1000);
+  }
+});

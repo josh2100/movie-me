@@ -4,12 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/css/style.css"></link>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.4/js/foundation.min.js"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <title>Movie Me</title>
-
   </head>
   <body>
-    <button id="action-button">action</button>
-    <script src="./assets/javascript/script.js"></script>
+    <header>
+      <h1>MOVIE ME!</h1>
+      <h3><a href="./watchlist.html">Watchlist</a></h3>
+      <p>
+        Click a genre button to get a random movie from Wikipedia and its
+        information from OMDB. If you like the recommendation, add it to your
+        watchlist!
+      </p>
+    </header>
+
+    <div class="display-content" id="display">
+      <p class="movie-content" id="movie-name"></p>
+    </div>
+
+    <div class="genre-btn" id="genre-filter">
+      <button class="btn" id="action-button">Action</button>
+      <button class="btn" id="horror-button">Horror</button>
+      <button class="btn" id="comedy-button">Comedy</button>
+      <button class="btn" id="drama-button">Drama</button>
+      <button class="btn" id="fantasy-button">Fantasy</button>
+      <button class="btn" id="romance-button">Romance</button>
+      <button class="btn" id="mystery-button">Mystery</button>
+    </div>
+
+    <script src="assets/javascript/script.js"></script>
   </body>
 </html>
