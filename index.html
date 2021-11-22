@@ -6,25 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.4/js/foundation.min.js"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
     <title>Movie Me</title>
   </head>
-  <body>
-    <header>
-      <h1>MOVIE ME!</h1>
+  <body class="hero has-background-grey is-fullheight">
+    
+    <header class="level column is-full has-background-danger has-text-black">
+      <h1 class="level-item has-text-centered title is-1">MOVIE ME!</h1>
+    </header>
+    
+    <div>
       <h3><a href="./watchlist.html">Watchlist</a></h3>
       <p>
         Click a genre button to get a random movie from Wikipedia and its
         information from OMDB. If you like the recommendation, add it to your
         watchlist!
       </p>
-    </header>
+    </div>  
 
-    <div class="display-content" id="display">
-      <p class="movie-content" id="movie-name"></p>
-    </div>
+      <div class="display-content mt-5 mx-auto is-justify-content-center" id="display">
+        <p class="movie-content" id="movie-name"></p>
+      </div>
 
     <div class="genre-btn" id="genre-filter">
       <button class="btn" id="action-button">Action</button>
