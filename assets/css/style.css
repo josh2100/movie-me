@@ -38,3 +38,47 @@ body {
 #plot {
   font-size: 20px;
 }
+
+@media (max-width: 375px) {
+  header h1 {
+    position: relative;
+    left: -30px;
+  }
+
+  .watch-list {
+    position: relative;
+    left: 5000px;
+    width: 125px;
+    height: 65px;
+    font-size: 0px;
+  }
+
+  .watch-list button {
+    position: relative;
+    top: 10px;
+    left: -4900px
+  }
+
+  .display-content {
+    width: 275px;
+    height: 200px;
+    position: relative;
+    top: 30px
+  }
+
+  .genre-btn {
+    position: relative;
+    top: 20px;
+    left: 50px;
+  }
+
+  #horror-button {
+    position: relative;
+    left: 15px;
+  }
+
+  #horror-button {
+    position: relative;
+    left: 15px;
+  }
+}
