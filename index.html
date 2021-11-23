@@ -16,7 +16,17 @@
     <header class="level column is-full has-background-danger has-text-black">
       <h1 class="level-item has-text-centered title is-1">MOVIE ME!</h1>
     </header>
-    <div class="watch-list column is-narrow has-background-info is-3 ml-3 has-text-white-bis">
+    <div
+      class="
+        watch-list
+        column
+        is-narrow
+        has-background-info
+        is-3
+        ml-3
+        has-text-white-bis
+      "
+    >
       <button class="button has-background-success mb-2">
         <a href="./watchlist.html">Watchlist</a>
       </button>
@@ -28,7 +38,10 @@
     </div>
 
     <!-- Movie Content -->
-    <div class="display-content mt-0 mb-0 mx-auto is-justify-content-center p-2" id="display">
+    <div
+      class="display-content mt-0 mb-0 mx-auto is-justify-content-center p-2"
+      id="display"
+    >
       <p class="movie-content" id="movie-name"></p>
     </div>
 
@@ -58,6 +71,14 @@
       <button class="btn button is-info is-rounded" id="mystery-button">
         Mystery
       </button>
+    </div>
+
+    <!-- Modal -->
+    <div id="errorModal" class="modal">
+      <div class="modal-content">
+        <span id="close-modal" class="close">&times;</span>
+        <p id="error-text"></p>
+      </div>
     </div>
 
     <script src="assets/javascript/script.js"></script>
