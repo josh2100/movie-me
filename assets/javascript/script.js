@@ -55,9 +55,6 @@ const getMovie = function (movieName) {
       if (response.ok) {
         response.json().then(function (data) {
           console.log(data);
-          // alert(
-          //   `${data.Title} Year: ${data.Year} Rated: ${data.Rated} Plot: ${data.Plot}`
-          // );
           currentMovie.title = data.Title;
           currentMovie.year = data.Year;
           currentMovie.rating = data.Rated;
@@ -139,9 +136,9 @@ const saveMovie = function () {
 
 var displayMovie = function () {
   //displayArea.textContent = currentMovie.title;
-  displayArea.innerHTML = `<h1 id="title">${currentMovie.title}</h1><p id="year">${currentMovie.year}</p>
+  displayArea.innerHTML = `<h1 id="title" class="">${currentMovie.title}</h1><p id="year">${currentMovie.year}</p>
   <p id="rating">${currentMovie.rating}</p><p id="plot">${currentMovie.plot}</p>
-  <button class="btn" id="watchlist-button">Add to Watchlist</button>`;
+  <button class="btn button is-medium is-info" id="watchlist-button">Add to Watchlist</button>`;
 
   // Add event listener to our new Add to Watchlist button
   document
