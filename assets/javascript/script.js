@@ -1,30 +1,33 @@
 // OMDB key 107a41b7, API example shown below
 //`http://www.omdbapi.com/?apikey=107a41b7&t=matrix`;
-var displayArea = document.querySelector("#movie-name");
-var actionButton = document.querySelector("#action-button");
+// const showMovieContent = document.querySelector("#display");
+const displayArea = document.querySelector("#movie-name");
+const actionButton = document.querySelector("#action-button");
 console.log(actionButton);
-var comedyButton = document.querySelector("#comedy-button");
+const comedyButton = document.querySelector("#comedy-button");
 console.log(actionButton);
-var dramaButton = document.querySelector("#drama-button");
+const dramaButton = document.querySelector("#drama-button");
 console.log(actionButton);
-var fantasyButton = document.querySelector("#fantasy-button");
+const fantasyButton = document.querySelector("#fantasy-button");
 console.log(actionButton);
-var horrorButton = document.querySelector("#horror-button");
+const horrorButton = document.querySelector("#horror-button");
 console.log(actionButton);
-var romanceButton = document.querySelector("#romance-button");
+const romanceButton = document.querySelector("#romance-button");
 console.log(actionButton);
-var mysteryButton = document.querySelector("#mystery-button");
+const mysteryButton = document.querySelector("#mystery-button");
 console.log(actionButton);
-var currentMovie = {
+const currentMovie = {
   title: "",
   year: "",
   rating: "",
   plot: "",
 };
-var watchlist = [];
+
+const modal = document.getElementById("errorModal");
+const errorText = document.getElementById("error-text");
+const closeSpan = document.getElementById("close-modal");
 
 // Variables to hold wikipedia article names
-// We need the following genres: Action Comedy Drama Fantasy Horror Mystery Romance
 const actionWiki20 = "List_of_action_films_of_the_2020s";
 const comedyWiki20 = "List_of_comedy_films_of_the_2020s";
 const dramaWiki10 = "List_of_drama_films_of_the_2010s";
@@ -34,6 +37,7 @@ const horrorWiki20 = "List_of_horror_films_of_the_2020s";
 const mysteryWiki20 = "List_of_mystery_films";
 const romanceWiki20 = "List_of_romance_films";
 
+let watchlist = [];
 let actionMovieArray = [];
 let comedyMovieArray = [];
 let dramaMovieArray = [];
@@ -61,12 +65,12 @@ const getMovie = function (movieName) {
           currentMovie.plot = data.Plot;
         });
       } else {
-        alert("Error: " + response.statusText);
+        displayModal("Error: " + response.statusText);
       }
     })
 
     .catch(function () {
-      alert("Unable to connect");
+      displayModal("Unable to connect");
     });
 };
 
@@ -94,18 +98,17 @@ const getWikiMovies = function (wikiArticle, genreArray) {
             ) {
               // Get just the title text
               let titleOnly = element.title.split("(");
-              console.log(titleOnly[0]);
               // Add it to our list
               genreArray.push(titleOnly[0]);
             }
           }
         });
       } else {
-        alert("Error: " + response.statusText);
+        displayModal("Error: " + response.statusText);
       }
     })
     .catch(function () {
-      alert("Unable to connect");
+      displayModal("Unable to connect");
     });
 };
 
@@ -113,10 +116,8 @@ const getWikiMovies = function (wikiArticle, genreArray) {
 const selectMovie = function (genreArray) {
   // Checks if any movies present
   if (genreArray[0]) {
-    console.log("some movies are present");
-    let randomNum = Math.floor(Math.random() * genreArray.length);
-    // console.log(randomNum);
     /// Select one movie at random
+    let randomNum = Math.floor(Math.random() * genreArray.length);
     getMovie(genreArray[randomNum]);
   } else {
     console.log("no movies present");
@@ -126,15 +127,17 @@ const selectMovie = function (genreArray) {
 const saveMovie = function () {
   // Check if this movie is already in watchlist
   if (watchlist.includes(`${currentMovie.title}`)) {
-    alert(`${currentMovie.title} already added in watchlist`);
+    displayModal(
+      `${currentMovie.title} has already been added to your watchlist`
+    );
   } else {
     watchlist.unshift(`${currentMovie.title}`);
-    alert(`WATCHLIST: ${watchlist}`);
+    displayModal(`${currentMovie.title} added to your watchlist!`);
     localStorage.setItem("watchlist", JSON.stringify(watchlist));
   }
 };
 
-var displayMovie = function () {
+const displayMovie = function () {
   //displayArea.textContent = currentMovie.title;
   displayArea.innerHTML = `<h1 id="title" class="">${currentMovie.title}</h1><p id="year">${currentMovie.year}</p>
   <p id="rating">${currentMovie.rating}</p><p id="plot">${currentMovie.plot}</p>
@@ -144,10 +147,19 @@ var displayMovie = function () {
   document
     .querySelector("#watchlist-button")
     .addEventListener("click", saveMovie);
+
+  ///Unhide movie
+  // showMovieContent.style.display = "block";
 };
 
 const loadWatchlist = function () {
   watchlist = JSON.parse(localStorage.getItem("watchlist"));
+};
+
+// Display modal function
+displayModal = (errorMessage) => {
+  modal.style.display = "block";
+  errorText.textContent = errorMessage;
 };
 
 // Preload all the Wikipedia data
@@ -237,3 +249,14 @@ mysteryButton.addEventListener("click", function () {
     setTimeout(selectMovie(mysteryMovieArray), 1000);
   }
 });
+
+// Close error modal when user clicks X, or anywhere outside modal
+// Code based on https://www.w3schools.com/howto/howto_css_modals.asp
+window.onclick = (event) => {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+closeSpan.onclick = () => {
+  modal.style.display = "none";
+};
