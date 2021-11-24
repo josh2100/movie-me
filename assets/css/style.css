@@ -39,12 +39,7 @@ body {
   font-size: 20px;
 }
 
-@media (max-width: 375px) {
-  header h1 {
-    position: relative;
-    left: -30px;
-  }
-
+@media screen and (max-width: 375px) {
   .watch-list {
     position: relative;
     left: 5000px;
@@ -56,29 +51,100 @@ body {
   .watch-list button {
     position: relative;
     top: 10px;
-    left: -4900px
+    left: -4890px
   }
 
   .display-content {
     width: 275px;
     height: 200px;
     position: relative;
-    top: 30px
+    top: -20px
+  }
+
+  .genre-btns {
+    position: relative;
+    top: 90px;
+    left: 10px;
+
   }
 
   .genre-btn {
-    position: relative;
-    top: 20px;
-    left: 50px;
+    width: 100px;
   }
 
-  #horror-button {
-    position: relative;
-    left: 15px;
+  #title {
+    font-size: 30px;
+  }
+  
+  #year {
+    font-size: 20px;
+  }
+  
+  #rating {
+    font-size: 20px;
+  }
+  
+  #plot {
+    font-size: 0;
   }
 
-  #horror-button {
+  #watchlist-button {
     position: relative;
-    left: 15px;
+    top: 15px
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .watch-list {
+    position: relative;
+    left: 5000px;
+    width: 125px;
+    height: 65px;
+    font-size: 0px;
+  }
+
+  .watch-list button {
+    position: relative;
+    top: 10px;
+    left: -4880px
+  }
+
+  .display-content {
+    width: 375px;
+    height: 250px;
+    position: relative;
+    top: -30px;
+  }
+
+  .genre-btns {
+    position: relative;
+    top: 70px;
+    left: 10px;
+
+  }
+
+  .genre-btn {
+    width: 100px;
+  }
+
+  #title {
+    font-size: 30px;
+  }
+  
+  #year {
+    font-size: 20px;
+  }
+  
+  #rating {
+    font-size: 20px;
+  }
+  
+  #plot {
+    font-size: 0;
+  }
+
+  #watchlist-button {
+    position: relative;
+    top: 15px
   }
 }
