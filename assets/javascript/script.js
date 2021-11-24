@@ -1,6 +1,3 @@
-// OMDB key 107a41b7, API example shown below
-//`http://www.omdbapi.com/?apikey=107a41b7&t=matrix`;
-// const showMovieContent = document.querySelector("#display");
 const displayArea = document.querySelector("#movie-name");
 const actionButton = document.querySelector("#action-button");
 console.log(actionButton);
@@ -112,8 +109,8 @@ const getWikiMovies = function (wikiArticle, genreArray) {
     });
 };
 
-// Select movie from a MovieArray,  then select one and run getmovie
-const selectMovie = function (genreArray) {
+// Select movie from a MovieArray,  then select one and run getMovie
+const selectMovie = async function (genreArray) {
   // Checks if any movies present
   if (genreArray[0]) {
     /// Select one movie at random
@@ -131,6 +128,7 @@ const saveMovie = function () {
       `${currentMovie.title} has already been added to your watchlist`
     );
   } else {
+    // Add it to the watchlist, save to local storage
     watchlist.unshift(`${currentMovie.title}`);
     displayModal(`${currentMovie.title} added to your watchlist!`);
     localStorage.setItem("watchlist", JSON.stringify(watchlist));
@@ -138,18 +136,15 @@ const saveMovie = function () {
 };
 
 const displayMovie = function () {
-  //displayArea.textContent = currentMovie.title;
-  displayArea.innerHTML = `<h1 id="title" class="">${currentMovie.title}</h1><p id="year">${currentMovie.year}</p>
-  <p id="rating">${currentMovie.rating}</p><p id="plot">${currentMovie.plot}</p>
+  // Populates display area with movie data
+  displayArea.innerHTML = `<h1 id="title" class="">${currentMovie.title}</h1><p id="year">Year: ${currentMovie.year}</p>
+  <p id="rating">Rating: ${currentMovie.rating}</p><p id="plot">${currentMovie.plot}</p>
   <button class="btn button is-medium is-info" id="watchlist-button">Add to Watchlist</button>`;
 
   // Add event listener to our new Add to Watchlist button
   document
     .querySelector("#watchlist-button")
     .addEventListener("click", saveMovie);
-
-  ///Unhide movie
-  // showMovieContent.style.display = "block";
 };
 
 const loadWatchlist = function () {
@@ -174,10 +169,9 @@ getWikiMovies(mysteryWiki20, mysteryMovieArray);
 loadWatchlist();
 
 actionButton.addEventListener("click", function () {
-  // Check if getWikiMovies has already been called
+  // Check if getWikiMovies has already been called, then call for data
   if (actionMovieArray[0]) {
-    selectMovie(actionMovieArray);
-    setTimeout(displayMovie, 1000);
+    selectMovie(actionMovieArray).then(setTimeout(displayMovie, 1000));
   } else {
     getWikiMovies(actionWiki20, actionMovieArray);
     setTimeout(selectMovie(actionMovieArray), 1000);
@@ -185,10 +179,9 @@ actionButton.addEventListener("click", function () {
 });
 
 comedyButton.addEventListener("click", function () {
-  // Check if getWikiMovies has already been called
+  // Check if getWikiMovies has already been called, then call for data
   if (comedyMovieArray[0]) {
-    selectMovie(comedyMovieArray);
-    setTimeout(displayMovie, 1000);
+    selectMovie(comedyMovieArray).then(setTimeout(displayMovie, 1000));
   } else {
     getWikiMovies(actionWiki20, comedyMovieArray);
     setTimeout(selectMovie(comedyMovieArray), 1000);
@@ -196,10 +189,9 @@ comedyButton.addEventListener("click", function () {
 });
 
 dramaButton.addEventListener("click", function () {
-  // Check if getWikiMovies has already been called
+  // Check if getWikiMovies has already been called, then call for data
   if (dramaMovieArray[0]) {
-    selectMovie(dramaMovieArray);
-    setTimeout(displayMovie, 1000);
+    selectMovie(dramaMovieArray).then(setTimeout(displayMovie, 1000));
   } else {
     getWikiMovies(dramaWiki20, dramaMovieArray);
     setTimeout(selectMovie(dramaMovieArray), 1000);
@@ -207,10 +199,9 @@ dramaButton.addEventListener("click", function () {
 });
 
 fantasyButton.addEventListener("click", function () {
-  // Check if getWikiMovies has already been called
+  // Check if getWikiMovies has already been called, then call for data
   if (fantasyMovieArray[0]) {
-    selectMovie(fantasyMovieArray);
-    setTimeout(displayMovie, 1000);
+    selectMovie(fantasyMovieArray).then(setTimeout(displayMovie, 1000));
   } else {
     getWikiMovies(fantasyWiki20, fantasyMovieArray);
     setTimeout(selectMovie(fantasyMovieArray), 1000);
@@ -218,10 +209,9 @@ fantasyButton.addEventListener("click", function () {
 });
 
 horrorButton.addEventListener("click", function () {
-  // Check if getWikiMovies has already been called
+  // Check if getWikiMovies has already been called, then call for data
   if (horrorMovieArray[0]) {
-    selectMovie(horrorMovieArray);
-    setTimeout(displayMovie, 1000);
+    selectMovie(horrorMovieArray).then(setTimeout(displayMovie, 1000));
   } else {
     getWikiMovies(horrorWiki20, horrorMovieArray);
     setTimeout(selectMovie(horrorMovieArray), 1000);
@@ -229,10 +219,9 @@ horrorButton.addEventListener("click", function () {
 });
 
 romanceButton.addEventListener("click", function () {
-  // Check if getWikiMovies has already been called
+  // Check if getWikiMovies has already been called, then call for data
   if (romanceMovieArray[0]) {
-    selectMovie(romanceMovieArray);
-    setTimeout(displayMovie, 1000);
+    selectMovie(romanceMovieArray).then(setTimeout(displayMovie, 1000));
   } else {
     getWikiMovies(romanceWiki20, romanceMovieArray);
     setTimeout(selectMovie(romanceMovieArray), 1000);
@@ -240,17 +229,16 @@ romanceButton.addEventListener("click", function () {
 });
 
 mysteryButton.addEventListener("click", function () {
-  // Check if getWikiMovies has already been called
+  // Check if getWikiMovies has already been called, then call for data
   if (mysteryMovieArray[0]) {
-    selectMovie(mysteryMovieArray);
-    setTimeout(displayMovie, 1000);
+    selectMovie(mysteryMovieArray).then(setTimeout(displayMovie, 1000));
   } else {
     getWikiMovies(mysteryWiki20, mysteryMovieArray);
     setTimeout(selectMovie(mysteryMovieArray), 1000);
   }
 });
 
-// Close error modal when user clicks X, or anywhere outside modal
+// Close modal when user clicks X, or anywhere outside modal
 // Code based on https://www.w3schools.com/howto/howto_css_modals.asp
 window.onclick = (event) => {
   if (event.target == modal) {
