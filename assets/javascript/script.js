@@ -151,6 +151,9 @@ const loadWatchlist = function () {
   watchlist = JSON.parse(localStorage.getItem("watchlist"));
 };
 
+// Prevent Chrome security from breaking page
+document.interestCohort = null;
+
 // Display modal function
 displayModal = (errorMessage) => {
   modal.style.display = "block";
