@@ -14,7 +14,7 @@ header h1 {
 
 #watchlist-page {
   position: relative;
-  top: -50px;
+  top: -60px;
 }
 
 .watchlist-item {
@@ -104,4 +104,14 @@ background-color: #1867A5;
   background-color: #1867A5;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+@media screen and (max-width: 700px) {
+  .display-content {
+    width: 100%;
+  }
+
+  .movie-info {
+    margin-left: 15px;
+  }
 }
