@@ -136,17 +136,10 @@ const saveMovie = () => {
 };
 
 const displayMovie = function () {
-<<<<<<< HEAD
   //displayArea.textContent = currentMovie.title;
   displayArea.innerHTML = `<h1 id="title" class="movie-info">${currentMovie.title}</h1><p id="year" class="movie-info">${currentMovie.year}</p>
   <p id="rating" class="movie-info">${currentMovie.rating}</p><p id="plot" class="movie-info">${currentMovie.plot}</p>
   <button class="movie-info btn button is-medium is-info" id="watchlist-button">Add to Watchlist</button>`;
-=======
-  // Populates display area with movie data
-  displayArea.innerHTML = `<h1 id="title" class="">${currentMovie.title}</h1><p id="year">Year: ${currentMovie.year}</p>
-  <p id="rating">Rating: ${currentMovie.rating}</p><p id="plot">${currentMovie.plot}</p>
-  <button class="btn button is-medium is-info" id="watchlist-button">Add to Watchlist</button>`;
->>>>>>> 0aab9987ab683fd969d5e6050ba87a7f8a900535
 
   // Add event listener to our new Add to Watchlist button
   document
