@@ -121,11 +121,18 @@ const selectMovie = async function (genreArray) {
   }
 };
 
-const saveMovie = function () {
-  // Add it to the watchlist, save to local storage
-  watchlist.unshift(`${currentMovie.title}`);
-  displayModal(`${currentMovie.title} added to your watchlist!`);
-  localStorage.setItem("watchlist", JSON.stringify(watchlist));
+const saveMovie = () => {
+  // Check if this movie is already in watchlist
+  if (watchlist.includes(`${currentMovie.title}`)) {
+    displayModal(
+      `${currentMovie.title} has already been added to your watchlist`
+    );
+  } else {
+    // Add it to the watchlist, save to local storage
+    watchlist.unshift(`${currentMovie.title}`);
+    displayModal(`${currentMovie.title} added to your watchlist!`);
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+  }
 };
 
 const displayMovie = function () {
