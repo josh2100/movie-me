@@ -50,7 +50,7 @@ let romanceMovieArray = [];
 const getMovie = function (movieName) {
   let movie = movieName;
 
-  const omdbApi = `http://www.omdbapi.com/?apikey=107a41b7&t=${movie}`;
+  const omdbApi = `https://www.omdbapi.com/?apikey=107a41b7&t=${movie}`;
 
   // Make a request to the url
   fetch(omdbApi)
