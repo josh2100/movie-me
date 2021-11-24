@@ -139,9 +139,9 @@ const saveMovie = function () {
 
 const displayMovie = function () {
   //displayArea.textContent = currentMovie.title;
-  displayArea.innerHTML = `<h1 id="title" class="">${currentMovie.title}</h1><p id="year">${currentMovie.year}</p>
-  <p id="rating">${currentMovie.rating}</p><p id="plot">${currentMovie.plot}</p>
-  <button class="btn button is-medium is-info" id="watchlist-button">Add to Watchlist</button>`;
+  displayArea.innerHTML = `<h1 id="title" class="movie-info">${currentMovie.title}</h1><p id="year" class="movie-info">${currentMovie.year}</p>
+  <p id="rating" class="movie-info">${currentMovie.rating}</p><p id="plot" class="movie-info">${currentMovie.plot}</p>
+  <button class="movie-info btn button is-medium is-info" id="watchlist-button">Add to Watchlist</button>`;
 
   // Add event listener to our new Add to Watchlist button
   document

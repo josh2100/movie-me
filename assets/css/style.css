@@ -82,3 +82,13 @@ header {
   text-decoration: none;
   cursor: pointer;
 }
+
+@media screen and (max-width: 700px) {
+  .display-content {
+    width: 100%;
+  }
+
+  .movie-info {
+    margin-left: 15px;
+  }
+}
