@@ -137,7 +137,13 @@ const displayMovie = function () {
   // Add event listener to our new Add to Watchlist button
   document
     .querySelector("#watchlist-button")
-    .addEventListener("click", saveMovie);
+    // .addEventListener("click", saveMovie);
+    .addEventListener(
+      "click",
+      console.log(
+        "Watchlist disabled. Uncomment line above and remove this one to test"
+      )
+    );
 };
 
 const loadWatchlist = function () {
