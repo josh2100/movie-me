@@ -12,6 +12,10 @@ header {
   top: -50px;
 }
 
+.watchlist-item {
+  height: 40px;
+}
+
 .display-content {
   background-color: white;
   width: 700px;
@@ -78,100 +82,3 @@ header {
   text-decoration: none;
   cursor: pointer;
 }
-
-/* Media Queries */
-/* @media (max-width: 375px) {
-  header h1 {
-    position: relative;
-    left: -30px;
-  }
-
-  .watch-list {
-    position: relative;
-    left: 5000px;
-    width: 125px;
-    height: 65px;
-    font-size: 0px;
-  }
-
-  .watch-list button {
-    position: relative;
-    top: 10px;
-    left: -4900px;
-  }
-
-  .display-content {
-    width: 275px;
-    height: 200px;
-    position: relative;
-    top: 30px;
-  }
-
-  .genre-btn {
-    position: relative;
-    top: 20px;
-    left: 50px;
-  }
-
-  #horror-button {
-    position: relative;
-    left: 15px;
-  }
-
-  #horror-button {
-    position: relative;
-    left: 15px;
-  }
-}
-
-@media screen and (max-width: 414px) {
-  .watch-list {
-    position: relative;
-    left: 5000px;
-    width: 125px;
-    height: 65px;
-    font-size: 0px;
-  }
-
-  .watch-list button {
-    position: relative;
-    left: -4880px;
-  }
-
-  .display-content {
-    width: 375px;
-    height: 250px;
-    position: relative;
-  }
-
-  .genre-btns {
-    position: relative;
-    left: 10px;
-  }
-
-  .genre-btn {
-    width: 100px;
-  }
-
-  #title {
-    font-size: 30px;
-  }
-
-  #year {
-    font-size: 20px;
-  }
-
-  #rating {
-    font-size: 20px;
-  }
-
-  #plot {
-    font-size: 0;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  header h1 {
-    font-size: 30px;
-  }
-} */
