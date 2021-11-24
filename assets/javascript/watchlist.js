@@ -10,7 +10,8 @@ const showWatchlist = function () {
   savedMovies.forEach((element) => {
     // Make an h2 Element
     let newMovieEl = document.createElement("h2");
-    newMovieEl.classList += "level";
+    newMovieEl.classList =
+      "level has-background-grey has-text-black pl-2 watchlist-item";
 
     // Add text
     let movieText = document.createTextNode(`${element}`);
@@ -18,7 +19,7 @@ const showWatchlist = function () {
     // Make button element
     let newButtonEl = document.createElement("button");
     newButtonEl.textContent = "Remove";
-    newButtonEl.classList = "button is-info";
+    newButtonEl.classList = "button is-info is-pulled-right";
 
     // Add it to Watchlist display
     watchlistDisplay.appendChild(newMovieEl);
