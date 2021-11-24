@@ -177,10 +177,10 @@ actionButton.addEventListener("click", function () {
   // Check if getWikiMovies has already been called
   if (actionMovieArray[0]) {
     selectMovie(actionMovieArray);
-    setTimeout(displayMovie, 1000);
+    setTimeout(displayMovie, 2000);
   } else {
     getWikiMovies(actionWiki20, actionMovieArray);
-    setTimeout(selectMovie(actionMovieArray), 1000);
+    setTimeout(selectMovie(actionMovieArray), 2000);
   }
 });
 
