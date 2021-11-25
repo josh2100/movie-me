@@ -2,9 +2,11 @@
 
 USER STORY
 
-AS AN indecisive movie enthusiast
-I WANT to get a movie recommendation based on genre
-SO THAT I can watch a new movie
+## AS AN indecisive movie enthusiast
+
+## I WANT to get a movie recommendation based on genre
+
+## SO THAT I can watch a new movie
 
 # Usage
 
